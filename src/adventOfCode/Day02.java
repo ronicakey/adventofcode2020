@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class Day02 {
 
-    private static final Pattern policy = Pattern.compile("(?<lower>[0-9]{1,2})-" +
+    private static final Pattern POLICY = Pattern.compile("(?<lower>[0-9]{1,2})-" +
             "(?<upper>[0-9]{1,2})\\s" +
             "(?<character>[a-z]):\\s" +
             "(?<password>[a-z]+)");
@@ -25,7 +25,7 @@ public class Day02 {
     }
 
     private static boolean isValidPasswordRegex(String str) {
-        Matcher matcher = policy.matcher(str);
+        Matcher matcher = POLICY.matcher(str);
         if (matcher.matches()) {
             long count = matcher.group("password").chars()
                     .filter(ch -> ch == matcher.group("character").charAt(0))
@@ -37,7 +37,7 @@ public class Day02 {
     }
 
     private static boolean isValidPasswordRegex2(String str) {
-        Matcher matcher = policy.matcher(str);
+        Matcher matcher = POLICY.matcher(str);
         if (matcher.matches()) {
             String password = matcher.group("password");
             char character = matcher.group("character").charAt(0);
